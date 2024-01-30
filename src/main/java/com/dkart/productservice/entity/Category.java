@@ -1,5 +1,6 @@
 package com.dkart.productservice.entity;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import jakarta.annotation.Nullable;
 import jakarta.persistence.*;
 import lombok.*;
@@ -23,6 +24,7 @@ public class Category {
     private String categoryName;
 
     @Nullable
+    @JsonIgnore
     @OneToMany(mappedBy = "category",fetch = FetchType.LAZY,cascade = CascadeType.ALL)
     private Set<Product> products;
 
