@@ -23,7 +23,7 @@ public class CategoryServiceImpl implements CategoryService {
     @Override
     public Category addCategory(Category category) {
         if (categoryRepository.findByCategoryName(category.getCategoryName()).isPresent()){
-            throw new CategoryAlreadyExistsException("Category Already Exists");
+            throw new CategoryAlreadyExistsException("Category Already Exists for "+category.getCategoryName());
         }
 
         return categoryRepository.save(category);
@@ -33,7 +33,7 @@ public class CategoryServiceImpl implements CategoryService {
     public Category checkForCategory(String categoryName) {
         Optional<Category> category=categoryRepository.findByCategoryName(categoryName);
         if(category.isEmpty()){
-            throw new CategoryNotFoundException("Category Not Found");
+            throw new CategoryNotFoundException("Category Not Found for categoryName "+categoryName);
         }
         return category.get();    }
 }

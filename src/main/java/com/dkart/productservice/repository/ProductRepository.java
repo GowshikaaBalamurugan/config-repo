@@ -11,4 +11,5 @@ import java.util.Optional;
 public interface ProductRepository extends JpaRepository<Product,Long> {
     void deleteAllByNameIn(List<String> productNames);
     Optional<Product> findProductByName(String productName);
+
 }
